@@ -272,9 +272,9 @@ Example in Git:
 ```yaml
 spring:
   datasource:
-    url: "{{ TSM_DB_URL }}?currentSchema=um"
-    username: "{{ TSM_DB_USER }}"
-    password: "{{ TSM_DB_PASSWORD }}"
+    url: "{{ DB_URL }}?currentSchema=um"
+    username: "{{ DB_USER }}"
+    password: "{{ DB_PASSWORD }}"
 ```
 
 If `config.yaml` contains:
@@ -293,20 +293,20 @@ and you prepare:
 
 ```bash
 # global env (used for all environments)
-export TSM_DB_USER=demo_user
-export TSM_DB_PASSWORD=s3cr3t
+export DB_USER=demo_user
+export DB_PASSWORD=s3cr3t
 
 # per-env .env file
 cat > /app/config/test.env <<'EOF'
-TSM_DB_URL=jdbc:postgresql://localhost:5432/app-test
-TSM_ENV_NAME=lokalni-test
+DB_URL=jdbc:postgresql://localhost:5432/app-test
+ENV_NAME=lokalni-test
 EOF
 ```
 
 Then requests against `/test/...` will see:
 
-* `TSM_DB_USER`, `TSM_DB_PASSWORD` from process/global env.
-* `TSM_DB_URL`, `TSM_ENV_NAME` from `/app/config/test.env`.
+* `DB_USER`, `DB_PASSWORD` from process/global env.
+* `DB_URL`, `ENV_NAME` from `/app/config/test.env`.
 
 > The server **does not decrypt secrets itself**.
 > If you have encrypted files (e.g. `env.secured.json`), decrypt them before starting the server and/or render them into env files.
