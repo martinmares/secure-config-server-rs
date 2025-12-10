@@ -1,4 +1,4 @@
-# Secure Config Server
+# Simple Config Server
 
 A small Rust service that acts as a **secure, Spring Cloud Config-compatible server** with a few extra features:
 
@@ -401,9 +401,9 @@ Logging is implemented with [`tracing`](https://crates.io/crates/tracing) and `t
 * You can control it with `RUST_LOG`, for example:
 
 ```bash
-RUST_LOG=info ./secure-config-server --config=config.yaml
-RUST_LOG=debug ./secure-config-server --config=config.yaml
-RUST_LOG=secure_config_server=debug,info ./secure-config-server --config=config.yaml
+RUST_LOG=info ./simple-config-server --config=config.yaml
+RUST_LOG=debug ./simple-config-server --config=config.yaml
+RUST_LOG=secure_config_server=debug,info ./simple-config-server --config=config.yaml
 ```
 
 Git operations are logged at `info` (start) and `warn`/`error` on failure. Handlers log at `warn`/`error` for invalid requests and internal errors.
